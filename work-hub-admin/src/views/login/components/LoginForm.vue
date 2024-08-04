@@ -7,21 +7,21 @@
   >
     <el-form-item prop="username">
       <el-input v-model="loginForm.username" placeholder="用户名">
-        <template #prefix>
+        <!-- <template #prefix>
           <el-icon class="el-input__icon">
             <user />
           </el-icon>
-        </template>
+        </template> -->
       </el-input>
     </el-form-item>
 
     <el-form-item prop="password">
       <el-input v-model="loginForm.password" placeholder="密码">
-        <template #prefix>
+        <!-- <template #prefix>
           <el-icon class="el-input__icon">
             <lock />
           </el-icon>
-        </template>
+        </template> -->
       </el-input>
     </el-form-item>
   </el-form>
@@ -49,6 +49,12 @@
 
 <script setup>
 import {ref, reactive, onMounted, onBeforeUnmount} from "vue";
+import {CircleClose, UserFilled} from "@element-plus/icons-vue";
+import {HOME_URL} from "@/config";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
+
 const loginRules = reactive({
     username: [{required: true, message: "请输入用户名", trigger: "blur"}],
     password: [{required: true, message: "请输入密码", trigger: "blur"}]
@@ -62,6 +68,14 @@ const loginForm = reactive({
 
 
 const login = () => {
-    
+  router.push(HOME_URL);
+}
+
+const resetForm = () => {
+
 }
 </script>
+
+<style scoped lang="scss">
+@import "../index.scss";
+</style>
